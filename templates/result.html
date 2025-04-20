@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hasil Perhitungan Persentase Kehadiran</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400&display=swap" rel="stylesheet">
+    </head>
+<body>
+    <div class="container">
+        <h1>Hasil Perhitungan Persentase Kehadiran</h1>
+
+        {% if results %}
+        <table>
+            <thead>
+                <tr>
+                    {% for key in results[0].keys() %}
+                    <th>{{ key }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in results %}
+                <tr>
+                    {% for value in row.values() %}
+                    <td>{{ value }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>Tidak ada data untuk ditampilkan.</p>
+    {% endif %}
+
+    <p><a href="/">Unggah File CSV/XLSX Lain</a></p>
+    </div>
+</body>
+</html>
